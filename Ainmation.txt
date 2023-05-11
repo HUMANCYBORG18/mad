@@ -1,0 +1,139 @@
+package com.example.anim1;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+
+public class MainActivity extends AppCompatActivity {
+
+    ImageView img;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        img = findViewById(R.id.img1);
+
+    }
+
+    public void rotate(View v)
+    {
+        Animation rotate = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate);
+        img.startAnimation(rotate);
+
+    }
+
+    public void fade(View v)
+    {
+        Animation start = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.start);
+        img.startAnimation(start);
+
+    }
+
+    public void zoom(View v)
+    {
+        Animation zoom = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoom);
+        img.startAnimation(zoom);
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/img1"
+        android:src="@drawable/manase"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="rotate"
+        android:text="rotate"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="zoom"
+        android:text="zoom"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="fade"
+        android:text="fade"/>
+
+</LinearLayout>
+
+
+
+
+
+
+
+
+
+zoom.xml
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <scale
+        android:fromXScale="0.5"
+        android:toXScale="2"
+        android:fromYScale="0.5"
+        android:toYScale="2"
+        android:duration="2000"
+        android:fillAfter="true"
+        />
+</set>
+
+fade.xml
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <alpha
+        android:toAlpha="10"
+        android:duration="10000"
+        android:fillAfter="true"
+        />
+</set>
+
+rotate.xml
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <rotate
+
+        android:toDegrees="180"
+        android:duration="300"
+        android:pivotY="50%"
+        android:pivotX="50%"
+        android:fillAfter="true"
+        />
+</set>

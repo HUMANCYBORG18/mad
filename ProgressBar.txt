@@ -1,0 +1,75 @@
+XML
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="downloadNow"
+        />
+
+
+
+
+</LinearLayout>
+
+JAVA
+import android.app.ProgressDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+
+
+public class MainActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+    }
+
+    public void downloadNow(View v)
+    {
+        Log.d("sdgsdg", "downloadNow: dfh");
+        ProgressDialog pb = new ProgressDialog(MainActivity.this);
+        pb.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        Thread t = new Thread(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        int prog = 0;
+                        while (prog<=100){
+                            pb.setProgress(prog);
+                            prog++;
+                            try {
+                                Thread.sleep(200);
+                            }
+                            catch(Exception e)
+                            {
+
+                            }
+
+                        }
+
+
+                    }
+                }
+        );
+        t.start();
+        pb.show();
+    }
+}

@@ -1,0 +1,95 @@
+XMl
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="green"
+        android:id="@+id/chk1"
+        android:onClick="makeToast"/>
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="blue"
+        android:id="@+id/chk2"
+        android:onClick="makeToast"/>
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="red"
+        android:id="@+id/chk3"
+        android:onClick="makeToast"/>
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="purple"
+        android:id="@+id/chk4"
+        android:onClick="makeToast"/>
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="yellow"
+        android:id="@+id/chk5"
+        android:onClick="makeToast"/>
+JAVA
+
+mport android.os.Bundle;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    CheckBox chk1, chk2, chk3, chk4, chk5;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        chk1 = findViewById(R.id.chk1);
+        chk2 = findViewById(R.id.chk2);
+        chk3 = findViewById(R.id.chk3);
+        chk4 = findViewById(R.id.chk4);
+        chk5 = findViewById(R.id.chk5);
+
+    }
+    public void makeToast(View v)
+    {
+
+        String status = new String(" ");
+        if (chk1.isChecked())
+        {
+            status = String.valueOf(chk1.getText());
+        }
+        if (chk2.isChecked())
+        {
+            status = String.valueOf(chk2.getText());
+        }
+        if (chk3.isChecked())
+        {
+            status = String.valueOf(chk3.getText());
+        }
+        if (chk4.isChecked())
+        {
+            status = String.valueOf(chk4.getText());
+        }
+        if (chk5.isChecked())
+        {
+            status = String.valueOf(chk5.getText());
+        }
+        Toast toast = Toast.makeText(getApplicationContext(), status, Toast.LENGTH_LONG);
+
+
+        toast.show();
+    }
+
+}
