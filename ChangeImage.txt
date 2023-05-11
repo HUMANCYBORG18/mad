@@ -1,0 +1,30 @@
+XML
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/image1"/>
+        
+    <Button
+        android:id="@+id/changeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change Image"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:onClick="changeImage"/>
+        
+</RelativeLayout>
+
+JAVA
+public void changeImage(View view) {
+    ImageView imageView = (ImageView) findViewById(R.id.imageView);
+    imageView.setImageResource(R.drawable.image2);
+}
+
+Agar dimag rahega toh tereko pata rahega ki ye kaha paste karna hai
